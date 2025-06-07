@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 3</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        body {
+            background-color: #74d8fa;
+            font-size: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        .task {
+            margin-bottom: 30px;
+        }
+
+        .cnt {
+            max-width: 1000px;
+            margin-inline: auto;
+        }
+
+        .content {
+            text-align: center;
+            font-size: 24px;
+            border: 2px solid rgb(67, 67, 67);
+            padding: 50px;
+            border-radius: 20px;
+            background-color: #7979ff;
+        }
+
+        .content>*:not(:last-child) {
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 20px;
+            background-color: #ffe4c0;
+            margin-left: 20px;
+        }
+
+        button {
+            margin-inline: auto;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: gray;
+            transition: transform 0.3s;
+            will-change: transform;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Task() {
+            return (
+                <React.Fragment>
+                    <div className="task">
+                        <h1>Задача 3</h1>
+                        <p>Задано початок та кінець діапазону.
+                            При натисканні на кнопку випадковим чином генерувати значення з вказаного діапазону та відображати його.</p>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        function RandomNum() {
+            const [randNum, setRandNum] = React.useState(1)
+            const [minNum, setMinNum] = React.useState(0)
+            const [maxNum, setMaxNum] = React.useState(10)
+            function setRandNumHandler(min, max) {
+                setRandNum(min + Math.floor(Math.random() * (max - min + 1)))
+            }
+            function setMinNumHandler(e) {
+                setMinNum(parseInt(e.target.value))
+            }
+            function setMaxNumHandler(e) {
+                setMaxNum(parseInt(e.target.value))
+            }
+            return (
+                <React.Fragment>
+                    <div className="content">
+                        <label>Мінімальне значення:
+                            <input onChange={setMinNumHandler} type="number" value={minNum} />
+                        </label>
+                        <label>Максимальне значення:
+                            <input onChange={setMaxNumHandler} type="number" value={maxNum} />
+                        </label>
+                        <button onClick={() => setRandNumHandler(minNum, maxNum)}>Згенерувати</button>
+                        <div>{`Випадкове число від ${minNum} до ${maxNum}: ${randNum}`}</div>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        function App() {
+            return (
+                <React.Fragment>
+                    <div className="cnt">
+                        <Task></Task>
+                        <RandomNum></RandomNum>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+
+</html>

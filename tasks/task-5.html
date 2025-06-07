@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 5</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        body {
+            background-color: #74d8fa;
+            font-size: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        .task {
+            margin-bottom: 30px;
+        }
+
+        .cnt {
+            max-width: 1000px;
+            margin-inline: auto;
+        }
+
+        .content {
+            text-align: center;
+            font-size: 24px;
+            border: 2px solid rgb(67, 67, 67);
+            padding: 50px;
+            border-radius: 20px;
+            background-color: #7979ff;
+        }
+
+        .content>*:not(:last-child) {
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 20px;
+            background-color: #ffe4c0;
+            margin-left: 20px;
+        }
+
+        button {
+            margin-inline: auto;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: gray;
+            transition: transform 0.3s;
+            will-change: transform;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Task() {
+            return (
+                <React.Fragment>
+                    <div clsassName="task">
+                        <h1>Задача 5</h1>
+                        <p>Додаток містить масив об’єктів (логін, пароль) --  існуючі логіни і паролі.
+                            Користувач вводить логін і пароль, а програма при натисненні на кнопку повідомляє чи може користувач бути авторизованим.</p>
+                        <ul>
+                            <li>admin - 11111</li>
+                            <li>aaaaa - 22222</li>
+                            <li>bbbbb - 33333</li>
+                        </ul>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        function AuthorizationPermit() {
+            const list = [
+                {
+                    login: "admin",
+                    password: 11111
+                },
+                {
+                    login: "aaaaa",
+                    password: 22222
+                },
+                {
+                    login: "bbbbb",
+                    password: 33333
+                },
+            ]
+            const [loginValue, setLoginValue] = React.useState("")
+            const [passwordValue, setPasswordValue] = React.useState("")
+            const [text, setText] = React.useState("")
+            function passwordWrite(e) {
+                setPasswordValue(e.target.value)
+            }
+            function loginWrite(e) {
+                setLoginValue(e.target.value)
+            }
+            function changeText() {
+                let condition = list.some(
+                    obj => obj.login === loginValue && obj.password === parseInt(passwordValue)
+                )
+                setText(condition ? "Авторизовано" : "Не вірний логін або пароль")
+            }
+            return (
+                <React.Fragment>
+                    <div className="content">
+                        <label>Введіть логін
+                            <input onChange={loginWrite} placeholder="Логін" type="text" value={loginValue} />
+                        </label>
+                        <br />
+                        <label>Введіть пароль
+                            <input onChange={passwordWrite} placeholder="password" type="password" value={passwordValue} />
+                        </label>
+                        <br />
+                        <button onClick={changeText}>ok</button>
+                        <div>{text}</div>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        function App() {
+            return (
+                <React.Fragment>
+                    <div className="cnt">
+                        <Task></Task>
+                        <AuthorizationPermit></AuthorizationPermit>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+
+</html>
