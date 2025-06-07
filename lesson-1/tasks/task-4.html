@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задача 4</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        body {
+            background-color: #74d8fa;
+            font-size: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        .task {
+            margin-bottom: 30px;
+        }
+
+        .cnt {
+            max-width: 1000px;
+            margin-inline: auto;
+        }
+
+        .content {
+            text-align: center;
+            font-size: 24px;
+            border: 2px solid rgb(67, 67, 67);
+            padding: 50px;
+            border-radius: 20px;
+            background-color: #7979ff;
+        }
+
+        .content>*:not(:last-child) {
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .box>*:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 20px;
+            background-color: #ffe4c0;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        button {
+            margin-inline: auto;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: gray;
+            transition: transform 0.3s;
+            will-change: transform;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Task() {
+            return (
+                <React.Fragment>
+                    <div clsassName="task">
+                        <h1>Задача 4</h1>
+                        <p>“Рахунок у банку”</p>
+                        <p>Вимоги:</p>
+                        <ul>
+                            <li>Спочатку сума дорівнює 0грн. Змінити суму у гривнях можна або зарахуванням на рахунок, або зняттям.</li>
+                            <li>Сума автоматично переводиться у долари та євро (фіксований курс задається у data).</li>
+                            <li>можливість зарахувати суму (контролювати, щоб не була від’ємною)</li>
+                            <li>можливість зняти (щоб не можна зняти більше ніж є на рахунку)</li>
+                            <li>при виконанні зняття і зарахування коштів вираховувати 3% від суми (відображати кількість відсотків автоматично)</li>
+                        </ul>
+                        <p>При зміні суми :</p>
+                        <ul>
+                            <li>якщо було зняття, то суму відображати червоним</li>
+                            <li>якщо було зарахування, то суму відображати зеленим</li>
+                            <li>Якщо сума валюти менша за 100 то відображати червоним кольором, інакше - зеленим</li>
+                        </ul>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        function BankAccount() {
+            const data = {
+                percentNum: 3,
+                dollarRate: 42,
+                euroRate: 47,
+            }
+            const [grnNum, setGrnNum] = React.useState(0)
+            const [dollarNum, setDollarNum] = React.useState(0)
+            const [euroNum, setEuroNum] = React.useState(0)
+            const [sumNum, setSumNum] = React.useState('')
+            const [textColor, setTextColor] = React.useState("black")
+            const tax = percentNumCalculate()
+            const valueInDollar = parseFloat(convertInDollar().toFixed(2))
+            const valueInEuro = parseFloat(convertInEuro().toFixed(2))
+            function changeValue(e) {
+                let value = parseInt(e.target.value)
+                if (!isNaN(value)) setSumNum(value)
+            }
+            function addMoney(textColor) {
+                setGrnNum((prevNum) => prevNum + sumNum - tax)
+                setDollarNum((prevNum) => prevNum + valueInDollar)
+                setEuroNum((prevNum) => prevNum + valueInEuro)
+                setSumNum('')
+                setTextColor("green")
+            }
+            function withdrawMoney(textColor) {
+                if (sumNum > grnNum) alert('Не вистачає грошей на рахунку')
+                else {
+                    setGrnNum((prevNum) => prevNum - sumNum - tax)
+                    setDollarNum((prevNum) => prevNum - valueInDollar)
+                    setEuroNum((prevNum) => prevNum - valueInEuro)
+                    setSumNum('')
+                    setTextColor("red")
+                }
+            }
+            function percentNumCalculate() {
+                return parseFloat((sumNum / 100 * data.percentNum).toFixed(2))
+            }
+            function convertInDollar() {
+                return (sumNum / data.dollarRate)
+            }
+            function convertInEuro() {
+                return (sumNum / data.euroRate)
+            }
+            function colorChange(val) {
+                let colorVal
+                if (Number(val) === 0) colorVal = 'black'
+                else if (Number(val) > 0 && Number(val) < 100) colorVal = 'red'
+                else if (Number(val) > 100) colorVal = 'green'
+                return colorVal
+            }
+            return (
+                <React.Fragment>
+                    <div className="content">
+                        <div>Сума на рахунку,грн: <span style={{ color: textColor }}>{grnNum}</span></div>
+                        <div className="box">
+                            <button onClick={addMoney}>Додати</button>
+                            <input onChange={changeValue} type="number" value={sumNum} min={0} />
+                            <button onClick={withdrawMoney}>Зняти</button>
+                            <div>Сума на рахунку,$: <span style={{ color: colorChange(dollarNum) }}>{dollarNum}</span></div>
+                            <div>Сума на рахунку,€: <span style={{ color: colorChange(euroNum) }}>{euroNum}</span></div>
+                            <div>{`Податок за операцію: ${data.percentNum}%, ${percentNumCalculate()}грн`}</div>
+                        </div>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        function App() {
+            return (
+                <React.Fragment>
+                    <div className="cnt">
+                        <Task></Task>
+                        <BankAccount></BankAccount>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+
+</html>
