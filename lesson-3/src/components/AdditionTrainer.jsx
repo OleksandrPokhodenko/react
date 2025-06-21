@@ -13,8 +13,7 @@ function AdditionTrainer() {
     const intervalSecondsRef = useRef(null)
     const intervalExamplesRef = useRef(null)
 
-    console.log('secondsCount');
-    console.log(secondsCount);
+
 
     function randomNum(min = 1, max = 100) {
         return min + Math.floor(Math.random() * (max - min + 1))
