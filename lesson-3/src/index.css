@@ -26,14 +26,19 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  place-content: center;
   min-width: 320px;
   min-height: 100vh;
+  padding: 20px 0;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h2 {
+  text-align: center;
 }
 
 button {
@@ -55,4 +60,119 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.cnt {
+  max-width: 1000px;
+}
+
+.box {
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.box:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.box:hover {
+  box-shadow: 0 0 15px #2de2fa;
+}
+
+.box__header {
+  font-size: 24px;
+  color: #fbcd8e;
+  margin-bottom: 30px;
+}
+
+.box__body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  min-height: 400px;
+  justify-content: center;
+}
+
+.box__column {
+  min-width: 350px;
+  flex-shrink: 1;
+  border: 1px solid #fbcd8e;
+  border-radius: 10px;
+  aspect-ratio: 300 / 400;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.box__title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.box__lists {
+  display: flex;
+}
+
+.box__list {
+  font-size: 20px;
+}
+
+.box__list>*:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.box__list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+.box__button:hover {
+  box-shadow: 0 0 5px #fff;
+}
+
+.box__button:active {
+  transform: scale(0.95);
+}
+
+.box__start {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 30px;
+}
+
+.box__button {
+  transition: box-shadow 0.3s, transform 0.3s;
+  will-change: transform;
+  background-color: darkgreen;
+  font-size: 20px;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 24px;
+}
+
+input {
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 5px;
+  transition: box-shadow 0.3s;
+}
+
+input:hover {
+  box-shadow: 0 0 10px #fff;
 }
