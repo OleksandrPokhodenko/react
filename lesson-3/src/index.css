@@ -90,7 +90,7 @@ button:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  min-height: 400px;
+  min-height: 200px;
   justify-content: center;
 }
 
@@ -99,12 +99,16 @@ button:focus-visible {
   flex-shrink: 1;
   border: 1px solid #fbcd8e;
   border-radius: 10px;
-  aspect-ratio: 300 / 400;
+  aspect-ratio: 1 / 0.85;
   padding: 20px 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
+}
+
+.box__column-big {
+  aspect-ratio: 300 / 400;
 }
 
 .box__title {
@@ -175,4 +179,20 @@ input {
 
 input:hover {
   box-shadow: 0 0 10px #fff;
+}
+
+.box__label {
+  flex-direction: column;
+}
+
+.box__input {
+  max-width: 150px;
+  min-height: 150px;
+  font-size: 70px;
+  text-align: center;
+}
+
+.box__warning {
+  font-size: 24px;
+  color: red;
 }

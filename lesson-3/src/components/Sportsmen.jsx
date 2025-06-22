@@ -63,11 +63,11 @@ function Sportsmen() {
                     При натисканні на червону стрілку спортсмен переміщається у загальний список.</div>
             </div>
             <div className="box__body">
-                <div className="box__column">
+                <div className="box__column box__column-big">
                     <h3 className="box__title">Загальний список</h3>
                     {outputAthlete(athletesList, 'forward', 'row', 'green', athletesList, setAthletesList, setCompetitionList)}
                 </div>
-                <div className="box__column">
+                <div className="box__column box__column-big">
                     <h3 className="box__title">Обрані для змагання</h3>
                     {outputAthlete(competitionList, 'back', 'row-reverse', 'red', competitionList, setCompetitionList, setAthletesList)}
                 </div>
