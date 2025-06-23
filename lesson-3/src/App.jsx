@@ -1,5 +1,5 @@
 import './App.css'
-import Sportsmen from './components/sportsmen'
+import Sportsmen from './components/Sportsmen'
 import SpeedTest from './components/SpeedTest'
 function App() {
 
