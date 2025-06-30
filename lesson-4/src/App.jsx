@@ -1,6 +1,6 @@
 import './App.css'
 import Messenger from './components/messenger/Messenger'
-import Game from './components/game/game'
+import Game from './components/game/Game'
 
 function App() {
 
