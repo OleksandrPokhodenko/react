@@ -1,13 +1,17 @@
 import './App.css'
-import Messenger from './components/messenger/Messenger'
-import Game from './components/game/Game'
+import Calculator from './components/task-1/Calculator'
+import DataGrid from './components/task-2/DataGrid'
+import WindowSize from './components/task-3/WindowSize'
+import Debounce from './components/task-4/Debounce'
 
 function App() {
 
   return (
     <div className='cnt'>
-      <Messenger />
-      <Game />
+      <Calculator />
+      <DataGrid />
+      <WindowSize />
+      <Debounce />
     </div>
   )
 }
