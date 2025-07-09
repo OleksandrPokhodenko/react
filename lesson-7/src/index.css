@@ -1,0 +1,58 @@
+body {
+  background-color: rgb(237, 237, 234);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: clip;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.menu {
+  display: flex;
+  gap: 1.875rem;
+  /* 30/16 */
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  min-height: 6.25rem;
+  /* 100/16 */
+}
+
+.menu__link {
+  font-size: 1.5rem;
+  color: rgb(23, 23, 98);
+  /* 24/16 */
+  border: 0.0625rem solid rgb(23, 23, 98);
+  border-radius: 0.3125rem;
+  /* 5/16 */
+  padding: 0.625rem;
+  /* 10/16 */
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.menu__link:hover {
+  box-shadow: 0 0 1rem rgb(23, 23, 98);
+}
+
+.menu__link.active {
+  transform: scale(0.95);
+}
+
+
+
+
+.copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.375rem;
+  /* 70/16 */
+  font-size: 1.25rem;
+  /* 20/16 */
+}
