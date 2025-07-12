@@ -101,6 +101,19 @@ app.delete('/api/products/:id', async (req, res) => {
   res.json(deleted)
 })
 
+// Отримання одного продукту за ID
+app.get('/api/products/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  const products = await readProducts()
+  const product = products.find((p) => p.id === id)
+
+  if (!product) {
+    return res.status(404).json({ error: 'Product not found' })
+  }
+
+  res.json(product)
+})
+
 // Запуск сервера
 initializeProductsFile().then(() => {
   app.listen(PORT, () => {

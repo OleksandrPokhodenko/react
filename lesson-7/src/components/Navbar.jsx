@@ -6,25 +6,25 @@ function Navbar() {
             <ul className='menu'>
                 <li>
                     <NavLink
-                        to={frontRoutes.layout} className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}>
+                        to={frontRoutes.pages.home} className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}>
                         Головна
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to={frontRoutes.products} className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}>
+                        to={frontRoutes.pages.products.index} className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}>
                         Магазин
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to={frontRoutes.payment} className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}>
+                        to={frontRoutes.pages.payment} className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}>
                         Правила оплати
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        to={frontRoutes.contacts} className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}>
+                        to={frontRoutes.pages.contacts} className={({ isActive }) => (isActive ? 'menu__link active' : 'menu__link')}>
                         Контакти
                     </NavLink>
                 </li>
