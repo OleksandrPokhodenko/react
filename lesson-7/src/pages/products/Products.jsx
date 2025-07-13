@@ -1,45 +1,29 @@
-import { useEffect, useState } from "react";
 import apiRoutes from "../../api/apiRoutes";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import frontRoutes from "../../routes/frontRoutes";
+import useFetch from "../../hooks/useFetch";
 
 function Products() {
-    const [productsList, setProductsList] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState(false)
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                setIsLoading(true)
-                const res = await fetch(apiRoutes.productsList)
-                const data = await res.json()
-                setProductsList(data)
-            } catch (err) {
-                setError(err)
-            }
-            finally {
-                setIsLoading(false)
-            }
-        }
-        fetchData()
-    }, [])
-
+    const navigate = useNavigate()
+    const { dataList: productsList, isLoading, error } = useFetch(apiRoutes.productsList)
     if (isLoading) return <div>Завантаження...</div>
     if (error) return <div>Помилка завантаження</div>
-    console.log(productsList);
     return (
-        <ul className="products">
-            {productsList.map(prod => (
-                <NavLink key={prod.id} to={frontRoutes.navigate.products.getDetailLink(prod.id)} className={({ isActive }) => (isActive ? "products__link active" : 'products__link')}>
-                    <li className="products__item">
-                        <h3 className="products__title">{prod.name}</h3>
-                        <img className="products__img" src={prod.imageUrl} alt="Image" />
-                        <div className="products__price">{`${prod.price}$`}</div>
+        <div className="cnt">
+            <ul className="products">
+                {productsList?.map(prod => (
+                    <li key={prod.id} className="products__item">
+                        <NavLink to={frontRoutes.navigate.products.getDetailLink(prod.id)} className={({ isActive }) => (isActive ? "products__link active" : 'products__link')}>
+                            <h3 className="products__title">{prod.name}</h3>
+                            <img className="products__img" src={prod.imageUrl} alt="Image" />
+                            <div className="products__price">{`${prod.price}$`}</div>
+                        </NavLink>
                     </li>
-                </NavLink>
-            ))
-            }
-        </ul >
+                ))
+                }
+            </ul >
+            <button onClick={() => navigate(frontRoutes.pages.home)} className="product__button">На головну</button>
+        </div>
     );
 }
 
