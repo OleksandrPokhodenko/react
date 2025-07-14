@@ -1,4 +1,4 @@
 export default {
-    productsList: 'http://localhost:5000/api/products',
-    getProductById: (id) => `http://localhost:5000/api/products/${id}`,
+    productsList: 'https://react-75lr.onrender.com/api/products',
+    getProductById: (id) => `https://react-75lr.onrender.com/api/products/${id}`,
 }
