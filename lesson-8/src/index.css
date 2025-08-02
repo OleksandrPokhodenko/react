@@ -7,7 +7,6 @@ body {
   flex-direction: column;
   min-height: 100%;
   overflow: clip;
-  padding-inline: 15px;
 }
 
 .wrapper>*:not(:last-child) {
@@ -17,4 +16,162 @@ body {
 
 main {
   flex-grow: 1;
+}
+
+[class*=__container] {
+  padding-inline: 15px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: rgb(2, 164, 2);
+}
+
+.header__container {}
+
+.menu {
+  display: flex;
+  gap: 30px;
+  min-height: 100px;
+  align-items: center;
+}
+
+.menu__item {}
+
+.menu__link {
+  font-size: 30px;
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.3s, border-bottom 0.3s, padding-bottom 0.3s;
+}
+
+.menu__link:hover {
+  color: yellow;
+}
+
+.menu__link.active {
+  color: yellow;
+  border-bottom: 1px solid yellow;
+  padding-bottom: 5px;
+}
+
+.home-page {}
+
+.home-page__container {}
+
+.home-page__box,
+.about-app-page__box,
+.about-dev-page__box {
+  border-radius: 30px;
+  box-shadow: 0 0 30px #000;
+  padding: 20px;
+}
+
+.home-page__title,
+.about-app-page__title,
+.about-dev-page__title {
+  font-size: 100px;
+  color: rgb(2, 164, 2);
+  margin-bottom: 50px;
+}
+
+.home-page__text {
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+
+.home-page__buttons {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-end;
+}
+
+.home-page__button {}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.button {
+  padding: 20px 50px;
+  font-size: 30px;
+  border: 1px solid transparent;
+  transition: border 0.3s, background-color 0.3s, color 0.3s;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.button:hover {
+  background-color: #fff;
+}
+
+.button--green {
+  background-color: rgb(2, 164, 2);
+}
+
+.button--green:hover {
+  color: rgb(2, 164, 2);
+  border: 1px solid rgb(2, 164, 2);
+}
+
+.button--red {
+  background-color: rgb(183, 31, 31);
+}
+
+.button--red:hover {
+  color: rgb(183, 31, 31);
+  border: 1px solid rgb(183, 31, 31);
+}
+
+.button--blue {
+  background-color: rgb(3, 111, 188);
+}
+
+.button--blue:hover {
+  color: rgb(3, 111, 188);
+  border: 1px solid rgb(3, 111, 188);
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+
+/* ---------------------------------------------------------------------------------------------- */
+.card {}
+
+.card__content {}
+
+.card__img {}
+
+.card__box {}
+
+.card__title {}
+
+.card__subject {}
+
+.card__button {}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.about-app-page__container,
+.about-dev-page__container {
+  padding-block: 50px;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+.footer {
+  background-color: gray;
+}
+
+.footer__container {
+  display: flex;
+  align-items: center;
+  min-height: 100px;
+  justify-content: center;
+}
+
+.footer__copy {
+  color: #fff;
+  font-size: 24px;
 }
