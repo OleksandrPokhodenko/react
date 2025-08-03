@@ -27,7 +27,7 @@ function TeachersForm() {
         }
         else {
             const newId = new Date().getTime()
-            addTeacher({ id: newId, ...teacher })
+            await addTeacher({ id: newId, ...teacher })
         }
         navigate(frontRoutes.navigate.teachers.index)
     }
