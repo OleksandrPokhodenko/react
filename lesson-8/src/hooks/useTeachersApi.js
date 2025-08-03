@@ -20,12 +20,57 @@ function useTeachersApi() {
             setLoading(false)
         }
     }, [])
+    const deleteTeacher = async (id) => {
+        setLoading(true)
+        setError(null)
+        try {
+            const confirmation = confirm('Ви точно хочете видалити вчителя?')
+            if (confirmation) {
+                await axios.delete(apiRoutes.deleteTeacher(id))
+                setData(prev => prev.filter(teacher => teacher.id !== id))
+            }
+        } catch (error) {
+            setError(error)
+        }
+        finally {
+            setLoading(false)
+        }
+    }
+    const editTeacher = async (id, updateTeacher) => {
+        setLoading(true)
+        setError(null)
+        try {
+            const res = await axios.put(apiRoutes.editTeacher(id), updateTeacher)
+            setData(prev => prev.map(teacher => teacher.id === id ? res.data : teacher))
+        } catch (error) {
+            setError(error)
+        }
+        finally {
+            setLoading(false)
+        }
+    }
+    const addTeacher = async (newTeacher) => {
+        setLoading(true)
+        setError(null)
+        try {
+            const res = await axios.post(apiRoutes.addTeacher, newTeacher)
+            setData(prev => [...prev, res.data])
+        } catch (error) {
+            setError(error)
+        }
+        finally {
+            setLoading(false)
+        }
+    }
     return (
         {
             error,
             loading,
             data,
-            fetchTeachers
+            fetchTeachers,
+            deleteTeacher,
+            editTeacher,
+            addTeacher
         }
     )
 }

@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "name": "Олена Коваль1",
+    "name": "Олена Коваль",
     "subject": "Математика",
     "photo": "https://cdn-icons-png.flaticon.com/512/168/168723.png"
   },
@@ -18,9 +18,9 @@
     "photo": "https://cdn-icons-png.flaticon.com/512/168/168725.png"
   },
   {
-    "id": 1751373531983,
-    "name": "aaa11",
-    "subject": "sss",
-    "photo": "ddd"
+    "id": "4",
+    "name": "Борис Іванов",
+    "subject": "Географія",
+    "photo": "https://cdn-icons-png.flaticon.com/512/168/168726.png"
   }
 ]

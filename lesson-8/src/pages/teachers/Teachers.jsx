@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 function Teachers() {
     const navigate = useNavigate()
-    const { data: teachersList, error, loading, fetchTeachers } = useTeachersApi()
+    const { data: teachersList, error, loading, fetchTeachers, deleteTeacher } = useTeachersApi()
     const [selectedTeachersId, setSelectedTeachersId] = useState([])
     useEffect(() => {
         fetchTeachers()
@@ -19,7 +19,13 @@ function Teachers() {
         }
         else setSelectedTeachersId((prev) => [...prev, id])
     }
-
+    function goToMeeting() {
+        navigate(frontRoutes.navigate.meeting, {
+            state: {
+                teachers: teachersList.filter(teacher => selectedTeachersId.includes(teacher.id))
+            }
+        })
+    }
     let content
     if (loading) content = <h2>Завнтаження...</h2>
     if (error) content = <h2>Помилка завантаження</h2>
@@ -40,7 +46,7 @@ function Teachers() {
                         />
                         <Button
                             color='red'
-                            path={frontRoutes.navigate.teachers.edit(teacher.id)}
+                            deleteFunction={() => deleteTeacher(teacher.id)}
                             buttonTitle='Видалити'
                         />
                     </div>
@@ -52,22 +58,20 @@ function Teachers() {
     return (
         <div className="teachers-page">
             <div className="teachers-page__container">
-                <div className="teachers-page__box">
-                    <h1 className="teachers-page__title">Список вчителів</h1>
-                    <div className="teachers-page__buttons">
-                        <Button
-                            color='green'
-                            path={frontRoutes.navigate.teachers.add}
-                            buttonTitle='Додати нового вчителя'
-                        />
-                        <Button
-                            onClick={onSelect}
-                            color='blue'
-                            buttonTitle={`Викликати ${selectedTeachersId.length} вчителів на збори`}
-                        />
-                    </div>
-                    {content}
+                <h1 className="teachers-page__title">Список вчителів</h1>
+                <div className="teachers-page__buttons">
+                    <Button
+                        color='green'
+                        path={frontRoutes.navigate.teachers.add}
+                        buttonTitle='Додати нового вчителя'
+                    />
+                    <Button
+                        navigateFunction={goToMeeting}
+                        color='blue'
+                        buttonTitle={`Викликати ${selectedTeachersId.length} вчителів на збори`}
+                    />
                 </div>
+                {content}
             </div>
         </div>
     )
