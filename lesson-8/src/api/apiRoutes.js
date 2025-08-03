@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/api'
+const API_BASE_URL = 'https://teacher-backend-q91e.onrender.com/api'
 export default {
     teachersList: `${API_BASE_URL}/teachers`,
     deleteTeacher: (id) => `${API_BASE_URL}/teachers/${id}`,
