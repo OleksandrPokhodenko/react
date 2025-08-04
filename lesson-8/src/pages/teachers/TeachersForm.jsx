@@ -4,6 +4,7 @@ import frontRoutes from "../../routes/frontRoutes";
 import { useParams, useNavigate } from 'react-router'
 import useTeachersApi from "../../hooks/useTeachersApi";
 import { useEffect } from "react";
+import Loader from "@/components/Loader";
 
 function TeachersForm() {
     const { id } = useParams()
