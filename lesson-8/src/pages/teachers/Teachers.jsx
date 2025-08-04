@@ -28,7 +28,7 @@ function Teachers() {
     }
     let content
     if (loading) content = <h2>Завнтаження...</h2>
-    if (error) content = <h2>Помилка завантаження</h2>
+    else if (error) content = <h2>Помилка завантаження</h2>
     else content = (
         <ul className="teachers-page__list">
             {teachersList.map(teacher => (
