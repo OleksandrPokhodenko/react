@@ -32,7 +32,7 @@ function TeachersForm() {
         navigate(frontRoutes.navigate.teachers.index)
     }
 
-    if (loading) return <div>Завнтаження...</div>
+    if (loading) return <Loader />
     if (error) return <div>Помилка завантаження</div>
     return (
         <div className="teachers-form-page">
