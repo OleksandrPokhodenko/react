@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router'
 import TeacherCard from "./TeacherCard";
 import useTeachersApi from "../../hooks/useTeachersApi";
 import { useEffect } from "react";
+import Loader from "@/components/Loader";
 
 function Teachers() {
     const navigate = useNavigate()
@@ -27,7 +28,7 @@ function Teachers() {
         })
     }
     let content
-    if (loading) content = <h2>Завнтаження...</h2>
+    if (loading) content = <Loader />
     else if (error) content = <h2>Помилка завантаження</h2>
     else content = (
         <ul className="teachers-page__list">
