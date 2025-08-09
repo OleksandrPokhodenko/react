@@ -9,18 +9,15 @@ import Loader from "@/components/Loader";
 function TeachersForm() {
     const { id } = useParams()
     const [teacher, setTeacher] = useState({ name: '', subject: '', photo: '' })
-    const { data: teachersList, loading, error, editTeacher, fetchTeachers, addTeacher } = useTeachersApi()
+    const { loading, error, teacherById, editTeacher, addTeacher, getTeacherById } = useTeachersApi()
     const isEditing = !!id
     const navigate = useNavigate()
     useEffect(() => {
-        fetchTeachers()
-    }, [fetchTeachers])
+        if (id) getTeacherById(id)
+    }, [id])
     useEffect(() => {
-        if (id && teachersList.length > 0) {
-            const editingTeacher = teachersList.find(teacher => teacher.id === id)
-            if (editingTeacher) setTeacher(editingTeacher)
-        }
-    }, [id, teachersList])
+        if (teacherById) setTeacher(teacherById)
+    }, [teacherById])
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (isEditing) {
@@ -32,7 +29,6 @@ function TeachersForm() {
         }
         navigate(frontRoutes.navigate.teachers.index)
     }
-
     if (loading) return <Loader />
     if (error) return <div>Помилка завантаження</div>
     return (
