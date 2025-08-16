@@ -1,6 +1,20 @@
-body {
-  background-color: rgb(237, 237, 234);
+:root {
+  --text-color: #121212;
+  --bg-color: #F5F5F5;
+  --card-bg-color: rgb(184, 182, 182);
+  --border: 1px solid #E0E0E0;
+  --hover-color: #1976D2;
 }
+
+.dark-theme {
+  --text-color: #fff;
+  --bg-color: #232222;
+  --card-bg-color: rgb(62, 62, 62);
+  --border: 1px solid #333333;
+  --hover-color: #03DAC6;
+}
+
+body {}
 
 .wrapper {
   display: flex;
@@ -9,9 +23,35 @@ body {
   overflow: clip;
 }
 
-.wrapper>*:not(:last-child) {
-  margin-bottom: 1.875rem;
-  /* 30/16 */
+.header {
+  background-color: var(--card-bg-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100px;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.header__button {
+  background-color: var(--bg-color);
+  border: var(--border);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  transition: background-color 0.3s;
+  color: var(--text-color);
+}
+
+.header__button:hover {
+  background-color: var(--hover-color);
 }
 
 main {
@@ -24,264 +64,100 @@ main {
   margin: 0 auto;
 }
 
-.header {
-  background-color: rgb(2, 164, 2);
-}
+.menu {}
 
-.menu {
+.menu__list {
   display: flex;
   gap: 30px;
   min-height: 100px;
   align-items: center;
+  justify-content: center;
 }
 
 .menu__link {
   font-size: 30px;
-  color: #fff;
   font-weight: 600;
-  transition: color 0.3s, border-bottom 0.3s, padding-bottom 0.3s;
+  transition: background-color 0.3s;
+  border: var(--border);
+  border-radius: 10px;
+  background-color: var(--bg-color);
+  padding: 10px 20px;
+  color: var(--text-color);
 }
 
 .menu__link:hover {
-  color: yellow;
+  background-color: var(--hover-color);
 }
 
-.menu__link.active {
-  color: yellow;
-  border-bottom: 1px solid yellow;
-  padding-bottom: 5px;
+/* ---------------------------------------------------------------------------------------------- */
+
+.home-page,
+.buses-page,
+.hotels-page,
+.summary-page {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  padding-block: 130px 30px;
+  min-height: calc(100vh - 100px);
 }
 
-.home-page__box,
-.about-app-page__box,
-.about-dev-page__box,
-.teachers-form-page__form {
-  border-radius: 30px;
-  box-shadow: 0 0 30px #000;
-  padding: 20px;
+.home-page__container {}
+
+.home-page__container>*:not(:last-child) {
+  margin-bottom: 30px;
 }
 
 .home-page__title,
-.about-app-page__title,
-.about-dev-page__title {
-  font-size: 100px;
-  color: rgb(2, 164, 2);
-  margin-bottom: 50px;
+.summary-page__title,
+.buses-page__title,
+.hotels-page__title {
+  font-size: 50px;
+}
+
+.home-page__subtitle {
+  font-size: 40px;
+}
+
+.home-page__list {}
+
+.home-page__list>*:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.home-page__item {
+  font-size: 24px;
+}
+
+.home-page__info {
+  font-size: 24px;
 }
 
 .home-page__text {
-  font-size: 40px;
-  margin-bottom: 50px;
+  font-size: 24px;
 }
 
-.home-page__buttons {
-  display: flex;
-  gap: 30px;
-  justify-content: flex-end;
+.link {
+  font-weight: 700;
+  font-style: italic;
+  color: rgb(53, 53, 190);
 }
 
-/* ---------------------------------------------------------------------------------------------- */
-
-.button-box {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  padding: 15px;
-  height: 100%;
-}
-
-.button {
-  padding: 20px 50px;
-  font-size: 30px;
-  border: 1px solid transparent;
-  transition: border 0.3s, background-color 0.3s, color 0.3s;
-  border-radius: 10px;
-  color: #fff;
-}
-
-.button:hover {
-  background-color: #fff;
-}
-
-.button--green {
-  background-color: rgb(2, 164, 2);
-}
-
-.button--green:hover {
-  color: rgb(2, 164, 2);
-  border: 1px solid rgb(2, 164, 2);
-}
-
-.button--red {
-  background-color: rgb(183, 31, 31);
-}
-
-.button--red:hover {
-  color: rgb(183, 31, 31);
-  border: 1px solid rgb(183, 31, 31);
-}
-
-.button--blue {
-  background-color: rgb(3, 111, 188);
-}
-
-.button--blue:hover {
-  color: rgb(3, 111, 188);
-  border: 1px solid rgb(3, 111, 188);
-}
-
-.button--grey {
-  background-color: grey;
-}
-
-.button--grey:hover {
-  color: grey;
-  border: 1px solid grey;
+.link:hover {
+  text-decoration: underline;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
 
-
-
-/* ---------------------------------------------------------------------------------------------- */
-.card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  border-radius: 30px;
-  padding: 50px;
+.decor {
+  width: 1000px;
+  height: 2px;
+  margin: 0 auto;
+  background-color: var(--text-color);
 }
-
-.card--green {
-  border: solid 2px rgb(2, 164, 2);
-  box-shadow: 0 0 30px rgb(2, 164, 2);
-}
-
-.card--grey {
-  border: solid 2px grey;
-  box-shadow: 0 0 30px #000;
-}
-
-.card__content {
-  display: flex;
-  gap: 50px;
-}
-
-.card__img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: grey;
-}
-
-.card__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card__box {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  justify-content: center;
-}
-
-.card__title {
-  color: rgb(2, 164, 2);
-  font-size: 50px;
-}
-
-.card__subject {
-  font-size: 30px;
-  color: grey;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-
-.teachers-page__container,
-.meeting-page__container {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.teachers-page__title,
-.meeting-page__title,
-.teachers-form-page__title {
-  font-size: 100px;
-  color: rgb(2, 164, 2);
-}
-
-.teachers-page__buttons,
-.teachers-form-page__buttons {
-  display: flex;
-  gap: 50px;
-}
-
-.teachers-page__item,
-.meeting-page__item {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.teachers-page__item:not(:last-child),
-.meeting-page__item:not(:last-child) {
-  margin-bottom: 50px;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-
-.meeting-page__subtitle {
-  font-size: 50px;
-  color: rgb(2, 2, 101);
-  background-color: rgb(153, 153, 209);
-  padding-block: 10px;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-
-.teachers-form-page {}
-
-.teachers-form-page__container {}
-
-.teachers-form-page__form {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.teachers-form-page__label {
-  font-size: 20px;
-}
-
-.teachers-form-page__input {
-  margin-top: 10px;
-  background-color: rgb(43, 43, 43);
-  padding: 15px;
-  border-radius: 10px;
-  color: #fff;
-}
-
-.teachers-form-page__input::placeholder {
-  color: grey;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-
-.about-app-page__container,
-.about-dev-page__container {
-  padding-block: 50px;
-}
-
-/* ---------------------------------------------------------------------------------------------- */
-
 
 .footer {
-  background-color: gray;
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }
 
 .footer__container {
@@ -292,6 +168,5 @@ main {
 }
 
 .footer__copy {
-  color: #fff;
   font-size: 24px;
 }

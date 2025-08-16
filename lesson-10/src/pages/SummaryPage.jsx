@@ -2,14 +2,14 @@ import CardsList from "@/components/CardsList";
 import { ThemeContext } from "@/context/ThemeContext";
 import { useContext } from "react";
 
-function BusesPage() {
+function SummaryPage() {
     const { theme } = useContext(ThemeContext)
     return (
-        <section className={theme === 'dark' ? 'buses-page dark-theme' : 'buses-page'}>
-            <h1 className="buses-page__title">Сторінка вибору автобуса</h1>
+        <section className={theme === 'dark' ? 'summary-page dark-theme' : 'summary-page'}>
+            <h1 className="summary-page__title">Сорінка підсумку</h1>
             <CardsList />
         </section>
     );
 }
 
-export default BusesPage;
+export default SummaryPage;

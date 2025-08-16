@@ -1,6 +1,15 @@
+import CardsList from "@/components/CardsList";
+import { ThemeContext } from "@/context/ThemeContext";
+import { useContext } from "react";
+
 function HotelsPage() {
+    const { theme } = useContext(ThemeContext)
     return (
-        <h1>Hotels Page</h1>
+        <section className={theme === 'dark' ? 'hotels-page dark-theme' : 'hotels-page'}>
+            <h1 className="hotels-page__title">Сторінка вибору готелів</h1>
+            <CardsList />
+        </section>
+
     );
 }
 
