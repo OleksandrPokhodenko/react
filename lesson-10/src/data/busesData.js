@@ -29,6 +29,6 @@ export const buses = [
         price: 400,
         departure: "Луцьк",
         arrival: "Київ",
-        image: "https://asset.kompas.com/crops/GfcG03PiGYlQOs_tIZ9SQwF4cWU=/0x181:1080x901/750x500/data/photo/2023/04/25/6446cc62d9773.jpg",
+        image: "https://man-ag.com.ua/wp-content/uploads/2022/06/man-bus-lions-coach-stage.jpeg",
     },
 ];

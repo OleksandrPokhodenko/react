@@ -5,7 +5,7 @@ import { ThemeContext } from "@/context/ThemeContext";
 function Header() {
     const { theme, changeTheme } = useContext(ThemeContext)
     return (
-        <header className={theme === 'dark' ? 'header dark-theme' : 'header'}>
+        <header className={theme === 'dark' ? 'header header--dark-theme' : 'header'}>
             <div className="header__container">
                 <Navbar />
                 <button className="header__button" onClick={changeTheme}>

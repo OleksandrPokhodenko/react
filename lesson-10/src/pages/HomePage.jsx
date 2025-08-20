@@ -6,7 +6,7 @@ import { Link } from "react-router";
 function HomePage() {
     const { theme } = useContext(ThemeContext)
     return (
-        <section className={theme === 'dark' ? 'home-page dark-theme' : 'home-page'}>
+        <section className={theme === 'dark' ? 'home-page home-page--dark-theme' : 'home-page'}>
             <div className="home-page__container">
                 <h1 className="home-page__title">Плануй свою подорож легко!</h1>
                 <h2 className="home-page__subtitle">Виберіть зручні автобуси та комфортні готелі — і ми підберемо для вас найкращий варіант із доступних.</h2>

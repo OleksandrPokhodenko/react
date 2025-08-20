@@ -2,16 +2,18 @@
   --text-color: #121212;
   --bg-color: #F5F5F5;
   --card-bg-color: rgb(184, 182, 182);
-  --border: 1px solid #E0E0E0;
+  --border: 2px solid #E0E0E0;
   --hover-color: #1976D2;
+  --box-shadow: 0 0 10px #121212;
 }
 
-.dark-theme {
+[class*=--dark-theme] {
   --text-color: #fff;
   --bg-color: #232222;
   --card-bg-color: rgb(62, 62, 62);
-  --border: 1px solid #333333;
+  --border: 2px solid #333333;
   --hover-color: #03DAC6;
+  --box-shadow: 0 0 10px #fff;
 }
 
 body {}
@@ -39,7 +41,8 @@ body {}
   gap: 30px;
 }
 
-.header__button {
+.header__button,
+.card__button {
   background-color: var(--bg-color);
   border: var(--border);
   padding: 10px 20px;
@@ -50,7 +53,8 @@ body {}
   color: var(--text-color);
 }
 
-.header__button:hover {
+.header__button:hover,
+.card__button:hover {
   background-color: var(--hover-color);
 }
 
@@ -98,7 +102,7 @@ main {
   color: var(--text-color);
   background-color: var(--bg-color);
   padding-block: 130px 30px;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 98px);
 }
 
 .home-page__container {}
@@ -112,6 +116,7 @@ main {
 .buses-page__title,
 .hotels-page__title {
   font-size: 50px;
+  margin-bottom: 30px;
 }
 
 .home-page__subtitle {
@@ -146,6 +151,66 @@ main {
   text-decoration: underline;
 }
 
+/* ---------------------------------------------------------------------------------------------- */
+
+.card-list {}
+
+.card-list__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.card-list__item {}
+
+.card-list__info {
+  font-size: 30px;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.card {
+  padding: 20px;
+  border: var(--border);
+  border-radius: 30px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: var(--box-shadow);
+}
+
+.card__box {
+  display: flex;
+  gap: 30px;
+}
+
+.card__img {
+  max-width: 399px;
+  aspect-ratio: 2/1.4;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__info {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  flex-direction: column;
+  font-size: 24px;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------------------------- */
 
 .decor {
