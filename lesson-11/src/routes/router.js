@@ -1,6 +1,7 @@
 import MainLayout from '@/layouts/MainLayout'
-import HomePage from '@/pages/HomePage'
 import Page404 from '@/pages/Page404'
+import Posts from '@/pages/Posts'
+import Products from '@/pages/Products'
 import { createBrowserRouter } from 'react-router'
 export const routes = [
     {
@@ -8,12 +9,19 @@ export const routes = [
         Component: MainLayout,
         children: [
             {
-                index: true,
-                Component: HomePage,
+                path: '',
+                Component: Products,
                 handler: {
-                    title: 'Головна'
+                    title: 'Список товарів'
                 }
             },
+            {
+                path: 'posts',
+                Component: Posts,
+                handler: {
+                    title: 'Список постів'
+                }
+            }
         ]
     },
     {
