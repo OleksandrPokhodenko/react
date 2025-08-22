@@ -248,6 +248,7 @@ main {
 .posts-page__subtitle {
   font-size: 24px;
   margin-bottom: 20px;
+  color: red;
 }
 
 .posts-page__list {
