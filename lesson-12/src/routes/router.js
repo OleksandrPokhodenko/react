@@ -1,6 +1,7 @@
 import MainLayout from '@/layouts/MainLayout'
+import InfinityScroll from '@/pages/InfinityScroll'
 import Page404 from '@/pages/Page404'
-import Posts from '@/pages/Posts'
+import PostsPage from '@/pages/postsPage'
 import { createBrowserRouter } from 'react-router'
 export const routes = [
     {
@@ -9,9 +10,16 @@ export const routes = [
         children: [
             {
                 path: '',
-                Component: Posts,
+                Component: PostsPage,
                 handler: {
                     title: 'Список постів'
+                }
+            },
+            {
+                path: 'scroll',
+                Component: InfinityScroll,
+                handler: {
+                    title: 'Нескінченний скрол'
                 }
             }
         ]
