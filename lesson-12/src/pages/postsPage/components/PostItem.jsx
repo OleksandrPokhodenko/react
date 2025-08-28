@@ -1,4 +1,5 @@
-function PostItem({ post }) {
+function PostItem({ post, onDelete }) {
+
     return (
         <div className="post-item">
             <h2 className="post-item__title">{post.title}</h2>
@@ -12,6 +13,9 @@ function PostItem({ post }) {
                 </div>
                 <div className="post-item__author">{post.authorId}</div>
             </div>
+            <button
+                onClick={() => onDelete(post.id)}
+                className="post-item__button">Видалити пост</button>
         </div>
     );
 }

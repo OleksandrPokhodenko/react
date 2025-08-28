@@ -15,3 +15,27 @@ export const fetchPosts = createAsyncThunk(
         }
     }
 )
+
+export const deletePost = createAsyncThunk(
+    'posts/deletePost',
+    async (id, { rejectWithValue }) => {
+        try {
+            return await postsAPI.delete(id)
+        }
+        catch (error) {
+            return rejectWithValue(error.message)
+        }
+    }
+)
+
+export const createPost = createAsyncThunk(
+    'posts/createPost',
+    async (postData, { rejectWithValue }) => {
+        try {
+            return await postsAPI.create(postData)
+        }
+        catch (error) {
+            return rejectWithValue(error.message)
+        }
+    }
+)

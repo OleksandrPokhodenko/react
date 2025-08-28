@@ -1,4 +1,4 @@
-import { setCurrentPage } from "@/redux/slices/posts/postsSlise";
+import { setCurrentPage } from "@/redux/slices/posts/postsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 function PaginationBlock() {
@@ -27,7 +27,7 @@ function PaginationBlock() {
                     onClick={currentPage !== totalPages ? () => dispatch(setCurrentPage(currentPage + 1)) : null}
                     className="pagination-block__button-edge">Наступна</button>
             </div>
-            : null
+            : <div className="pagination-block__loading">Завантаження...</div>
     );
 }
 

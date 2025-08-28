@@ -77,7 +77,7 @@ class DBClient {
     })
   }
 
-  async readPaginated(page = 1, limit = 10) {
+  async readPaginated(page = 1, limit = 5) {
     return this._imitateBackendCall(() => {
       const data = this._getData()
       const totalItems = data.length

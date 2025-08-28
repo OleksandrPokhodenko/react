@@ -68,7 +68,7 @@ main {
 
 .menu__list {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   min-height: 100px;
   align-items: center;
   justify-content: center;
@@ -83,6 +83,13 @@ main {
   background-color: var(--bg-color);
   padding: 10px 20px;
   color: var(--text-color);
+}
+
+@media (max-width: 600px) {
+  .menu__link {
+    font-size: 20px;
+    padding: 10px 10px;
+  }
 }
 
 .menu__link:hover {
@@ -103,6 +110,54 @@ main {
 }
 
 .post-page__box {}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.posts-form {
+  border: var(--border);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  background-color: var(--card-bg-color);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.posts-form--margin {
+  margin-bottom: 50px;
+}
+
+.posts-form__label {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.posts-form__input {
+  background-color: #fff;
+  padding: 10px;
+  margin-top: 16px;
+}
+
+.posts-form__textarea {
+  background-color: #fff;
+  padding: 10px;
+  margin-top: 16px;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.posts-form__button {
+  background-color: #4789cc;
+  padding: 10px;
+  border-radius: 10px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.posts-form__button:hover {
+  background-color: #115599;
+  color: #fff;
+}
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -137,6 +192,9 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .post-item__likes {
@@ -154,6 +212,22 @@ main {
 .post-item__author {
   font-size: 20px;
   font-weight: 600;
+  font-style: italic;
+}
+
+.post-item__button {
+  border: var(--border);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  transition: background-color 0.3s, color 0.3s;
+  color: var(--text-color)
+}
+
+.post-item__button:hover {
+  background-color: rgb(255, 68, 68);
+  color: #fff;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -162,6 +236,8 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .pagination-block__buttons {
@@ -169,6 +245,7 @@ main {
   gap: 10px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .pagination-block__button {
@@ -214,6 +291,11 @@ main {
 .pagination-block__button-edge:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.pagination-block__loading {
+  font-size: 20px;
+  text-align: center;
 }
 
 /* ---------------------------------------------------------------------------------------------- */
