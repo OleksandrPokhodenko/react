@@ -9,4 +9,5 @@ export default defineConfig({
       '@': '/src', // Відносний шлях до src
     },
   },
+  base: '/',
 })
