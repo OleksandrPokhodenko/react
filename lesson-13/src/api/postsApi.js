@@ -12,9 +12,9 @@ export const postsApi = createApi({
       providesTags: (result) =>
         result
           ? [
-              ...result.items.map(({ id }) => ({ type: 'Post', id })),
-              { type: 'Posts', id: 'LIST' },
-            ]
+            ...result.items.map(({ id }) => ({ type: 'Post', id })),
+            { type: 'Posts', id: 'LIST' },
+          ]
           : [{ type: 'Posts', id: 'LIST' }],
     }),
 
@@ -35,12 +35,37 @@ export const postsApi = createApi({
       providesTags: (result) =>
         result
           ? [
-              ...result.pages.flatMap((page) =>
-                page.items.map(({ id }) => ({ type: 'Post', id }))
-              ),
-              { type: 'Posts', id: 'LIST' },
-            ]
+            ...result.pages.flatMap((page) =>
+              page.items.map(({ id }) => ({ type: 'Post', id }))
+            ),
+            { type: 'Posts', id: 'LIST' },
+          ]
           : [{ type: 'Posts', id: 'LIST' }],
+    }),
+
+    // Додати пост
+    addPost: build.mutation({
+      query: (newPost) => ({
+        url: `/posts/`,
+        method: 'POST',
+        body: newPost,
+      }),
+      invalidatesTags: () => [
+        { type: 'Posts', id: 'LIST' }
+      ],
+    }),
+
+    //Редагувати пост
+    editPost: build.mutation({
+      query: ({ id, newPost }) => ({
+        url: `/posts/${id}`,
+        method: 'PUT',
+        body: newPost,
+      }),
+      invalidatesTags: (result, error, { id }) => [
+        { type: 'Posts', id: 'LIST' },
+        { type: 'Post', id }
+      ]
     }),
 
     // Видалити пост
@@ -80,6 +105,8 @@ export const {
   useGetPostByIdQuery,
   useGetPostsInfiniteQuery,
   useDeletePostMutation,
+  useAddPostMutation,
+  useEditPostMutation,
   useLikePostMutation,
   useDislikePostMutation,
 } = postsApi

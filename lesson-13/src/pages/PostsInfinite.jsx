@@ -37,18 +37,18 @@ const PostsInfinitePage = () => {
   if (!isSuccess) return <p>Помилка завантаження.</p>
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
       <h2>Нескінченне завантаження постів</h2>
       {data.pages.map((page, i) => (
         <Fragment key={i}>
           {page.items.map((post) => (
             <div
               key={post.id}
-              style={{ borderBottom: '1px solid #ccc', marginBottom: '10px' }}
+              style={{ border: '1px solid #fff', borderRadius: '10px', padding: '20px' }}
             >
               <h4>{post.title}</h4>
               <p>
-                Лайки: {post.likesNumber} | Дизлайки: {post.dislikesNumber}
+                Лайки: {post.likesNumber} - Дизлайки: {post.dislikesNumber}
               </p>
             </div>
           ))}

@@ -10,24 +10,25 @@ const PostDetails = ({ postId }) => {
     skip: !postId,
   })
 
-  if (!postId) return <p>Оберіть пост, щоб побачити деталі.</p>
+  if (!postId) return <p style={{ fontSize: '20px' }}>Оберіть пост, щоб побачити деталі.</p>
   if (isLoading) return <p>Завантаження деталей...</p>
   if (isError) return <p>Помилка завантаження деталей.</p>
 
   return (
     <div
       style={{
-        border: '1px solid #ccc',
+        border: '2px solid #ccc',
         padding: '10px',
         marginBottom: '20px',
+        borderRadius: '10px'
       }}
     >
       <h3>{post.title}</h3>
       <p>ID: {post.id}</p>
       <p>Дата публікації: {new Date(post.publicationDate).toLocaleString()}</p>
       <p>Лайки: {post.likesNumber}</p>
-      <p>Дислайки: {post.dislikesNumber}</p>
-      <p>{post.content || 'Без опису'}</p>
+      <p>Дизлайки: {post.dislikesNumber}</p>
+      <p>{post.body || 'Без опису'}</p>
     </div>
   )
 }

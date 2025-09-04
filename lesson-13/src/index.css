@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -34,6 +38,18 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+@media(max-width:800px) {
+  h1 {
+    font-size: 2.4em;
+  }
+}
+
+@media(max-width:600px) {
+  h1 {
+    font-size: 1.6em;
+  }
 }
 
 button {
@@ -70,4 +86,98 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.posts {}
+
+.posts__list {
+  padding: 0;
+  list-style: none;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.posts__item {
+  border: 2px solid rgb(79, 79, 120);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.posts__title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.posts__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.posts__likes {
+  display: flex;
+  gap: 10px;
+}
+
+.posts__buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media(max-width:500px) {
+
+  .posts__actions,
+  .posts__buttons {
+    justify-content: center;
+  }
+}
+
+.posts__paginated {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.post-edit-page {}
+
+.post-edit-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.post-edit-page__label {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  align-items: start;
+
+}
+
+.post-edit-page__input,
+.post-edit-page__textarea {
+  padding: 10px;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 20px;
+  max-width: 800px;
+}
+
+.post-edit-page__textarea {
+  min-height: 100px;
+  resize: vertical;
 }

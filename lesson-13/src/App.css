@@ -10,6 +10,13 @@
   transition: filter 300ms;
 }
 
+@media(max-width:500px) {
+  .logo {
+    height: 3em;
+
+  }
+}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }

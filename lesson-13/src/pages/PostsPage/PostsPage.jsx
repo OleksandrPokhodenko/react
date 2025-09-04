@@ -8,7 +8,7 @@ const PostsPage = () => {
 
   return (
     <div>
-      <h2>Сторінка постів</h2>
+      <h2 style={{ fontSize: '30px' }}>Сторінка постів</h2>
       <PostDetails postId={selectedPostId} />
       <PostsList onSelect={setSelectedPostId} />
       <Link to="/posts/edit">

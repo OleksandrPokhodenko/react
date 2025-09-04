@@ -5,7 +5,7 @@ import { pagesRoutes } from '@/router/routes'
 const MainMenu = () => {
   return (
     <nav>
-      <ul style={{ display: 'flex', listStyle: 'none', padding: 0, margin: 0, justifyContent: 'center' }}>
+      <ul style={{ display: 'flex', listStyle: 'none', padding: 0, margin: 0, justifyContent: 'center', flexWrap: 'wrap' }}>
         {pagesRoutes
           .filter((route) => !route.meta.notInMenu)
           .map(({ path, meta }) => (

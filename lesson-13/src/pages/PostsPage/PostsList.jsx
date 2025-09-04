@@ -26,65 +26,65 @@ const PostsList = ({ onSelect }) => {
   const { items, totalPages, remaining } = data
 
   return (
-    <div>
-      <ul style={{ padding: 0, listStyle: 'none' }}>
+    <div className='posts'>
+      <ul
+        className='posts__list'>
         {items.map((post) => (
           <li
+            className='posts__item'
             key={post.id}
-            style={{
-              marginBottom: '10px',
-              borderBottom: '1px solid #ccc',
-              paddingBottom: '10px',
-            }}
           >
-            <strong>{post.title}</strong>
-            <div>
-              Лайки: {post.likesNumber}{' '}
-              <button onClick={() => likePost(post.id)}>👍</button> Дизлайки:{' '}
-              {post.dislikesNumber}{' '}
-              <button onClick={() => dislikePost(post.id)}>👎</button>{' '}
-              <button onClick={() => onSelect(post.id)}>Деталі</button>{' '}
-              <button onClick={() => navigate(`/posts/edit/${post.id}`)}>
-                Редагувати
-              </button>{' '}
-              <button
-                onClick={() => {
-                  if (window.confirm('Видалити пост?')) deletePost(post.id)
-                }}
-              >
-                Видалити
-              </button>
+            <p className='posts__title'>{post.title}</p>
+            <div className='posts__actions'>
+              <div className='posts__likes'>
+                <button onClick={() => likePost(post.id)}>👍 {post.likesNumber}</button>
+                <button onClick={() => dislikePost(post.id)}>👎 {post.dislikesNumber}</button>
+              </div>
+              <div className="posts__buttons">
+                <button onClick={() => onSelect(post.id)}>Деталі</button>
+                <button onClick={() => navigate(`/posts/edit/${post.id}`)}>
+                  Редагувати
+                </button>{' '}
+                <button
+                  onClick={() => {
+                    if (window.confirm('Видалити пост?')) deletePost(post.id)
+                  }}
+                >
+                  Видалити
+                </button>
+              </div>
             </div>
           </li>
         ))}
       </ul>
       {isFetching && <p>Оновлення...</p>}
-      <hr />
       <div style={{ marginTop: '20px' }}>
-        <button
-          onClick={() => setPage((p) => Math.max(p - 1, 1))}
-          disabled={page === 1}
-        >
-          Попередня
-        </button>
-        {[...Array(totalPages)].map((_, i) => (
+        <div className="posts__paginated">
           <button
-            key={i}
-            onClick={() => setPage(i + 1)}
-            style={{
-              fontWeight: page === i + 1 ? 'bold' : 'normal',
-              color: page === i + 1 ? 'red' : '',
-            }}
+            onClick={() => setPage((p) => Math.max(p - 1, 1))}
+            disabled={page === 1}
           >
-            {i + 1}
+            Попередня
           </button>
-        ))}
-        <button
-          onClick={() => setPage((p) => (remaining > 0 ? p + 1 : p))}
-          disabled={remaining === 0}
-        >
-          Наступна
-        </button>
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setPage(i + 1)}
+              style={{
+                fontWeight: page === i + 1 ? 'bold' : 'normal',
+                color: page === i + 1 ? 'red' : '',
+              }}
+            >
+              {i + 1}
+            </button>
+          ))}
+          <button
+            onClick={() => setPage((p) => (remaining > 0 ? p + 1 : p))}
+            disabled={remaining === 0}
+          >
+            Наступна
+          </button>
+        </div>
       </div>
     </div>
   )
