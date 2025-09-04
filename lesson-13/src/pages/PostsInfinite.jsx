@@ -1,6 +1,7 @@
 import { Fragment, useEffect } from 'react'
 import { useGetPostsInfiniteQuery } from '@/api/postsApi'
 import { useScrollToBottom } from '@/hooks/useScrollToBottom'
+import Loader from '@/components/Loader'
 
 const PostsInfinitePage = () => {
   const {
@@ -33,7 +34,7 @@ const PostsInfinitePage = () => {
     fetchNextPage,
   ])
 
-  if (isLoading) return <p>Завантаження...</p>
+  if (isLoading) return <Loader />
   if (!isSuccess) return <p>Помилка завантаження.</p>
 
   return (
@@ -54,7 +55,7 @@ const PostsInfinitePage = () => {
           ))}
         </Fragment>
       ))}
-      {isFetchingNextPage && <p>Завантаження наступної сторінки...</p>}
+      {isFetchingNextPage && <Loader />}
       {!hasNextPage && <p>Більше постів немає.</p>}
     </div>
   )

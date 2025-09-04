@@ -1,5 +1,6 @@
 import React from 'react'
 import { useGetPostByIdQuery } from '../../api/postsApi'
+import Loader from '@/components/Loader'
 
 const PostDetails = ({ postId }) => {
   const {
@@ -11,7 +12,7 @@ const PostDetails = ({ postId }) => {
   })
 
   if (!postId) return <p style={{ fontSize: '20px' }}>Оберіть пост, щоб побачити деталі.</p>
-  if (isLoading) return <p>Завантаження деталей...</p>
+  if (isLoading) return <Loader />
   if (isError) return <p>Помилка завантаження деталей.</p>
 
   return (
