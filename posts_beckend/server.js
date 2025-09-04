@@ -119,7 +119,7 @@ app.post('/posts/:id/dislike', (req, res) => {
   let posts = readPosts()
   const post = posts.find((p) => p.id === parseInt(req.params.id))
   if (!post) return res.status(404).json({ message: 'Post not found' })
-  post.dislikesNumber--
+  post.dislikesNumber++
   writePosts(posts)
   res.json({ dislikesNumber: post.dislikesNumber })
 })
