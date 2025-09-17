@@ -27,6 +27,11 @@ export const frontRoutes = {
       edit: (id) => `/doctors/edit/${id}`,
       create: '/doctors/edit',
       details: (id) => `/doctors/details/${id}`
+    },
+    appointments: {
+      list: '/appointments',
+      edit: (id) => `/appointments/edit/${id}`,
+      create: 'appointments/edit',
     }
   },
 }

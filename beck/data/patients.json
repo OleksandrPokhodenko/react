@@ -9,6 +9,16 @@
     "address": "м. Київ, вул. Шевченка, 12",
     "notes": "Алергія на пеніцилін"
   },
+    {
+    "id": "p002",
+    "fullName": "Оксана Шевчук",
+    "birthDate": "1990-06-21",
+    "gender": "female",
+    "phone": "+380931112233",
+    "email": "oksana@gmail.com",
+    "address": "м. Львів, вул. Зеленa, 8",
+    "notes": ""
+  },
   {
     "id": "p003",
     "fullName": "Марія Коваль",

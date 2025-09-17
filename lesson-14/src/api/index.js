@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { apiRoutes } from './apiRoutes'
-import { build } from 'vite'
 
 export const api = createApi({
   reducerPath: 'api',
@@ -81,22 +80,50 @@ export const api = createApi({
         { type: 'Doctors', id }
       ],
     }),
-    getAppointments: build.query({
+    getAppointments: builder.query({
       query: () => apiRoutes.appointments.getAll,
       providesTags: ['Appointments'],
     }),
-    getAppointmentById: build.query({
+    getAppointmentById: builder.query({
       query: (id) => apiRoutes.appointments.getById(id),
       providesTags: (result, error, id) => [{ type: 'Appointment', id }],
     }),
-    updateAppointment: build.mutation({
+    updateAppointment: builder.mutation({
       query: ({ id, ...data }) => ({
         url: apiRoutes.appointments.update(id),
         method: 'PUT',
         body: data,
       }),
-
-    })
+    }),
+    createAppointment: builder.mutation({
+      query: (id) => ({
+        url: apiRoutes.appointments.create(id),
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: ({ result, error, id }) => [
+        'Appointments',
+        { type: 'Appointment', id }
+      ],
+    }),
+    deleteAppointment: builder.mutation({
+      query: (id) => ({
+        url: apiRoutes.appointments.delete(id),
+        method: 'DELETE',
+      }),
+      invalidatesTags: ({ result, error, id }) => [
+        'Appointments',
+        { type: 'Appointment', id }
+      ],
+    }),
+    filteredByDate: builder.query({
+      query: (date) => apiRoutes.appointments.filterByDate(date),
+      providesTags: ['Appointments'],
+    }),
+    filteredByPatientName: builder.query({
+      query: (patientName) => apiRoutes.appointments.filterByPatientName(patientName),
+      invalidatesTags: ['Appointments'],
+    }),
   }),
 })
 
@@ -110,5 +137,12 @@ export const {
   useCreateDoctorMutation,
   useDeleteDoctorMutation,
   useGetDoctorsQuery,
-  useUpdateDoctorMutation
+  useUpdateDoctorMutation,
+  useCreateAppointmentMutation,
+  useDeleteAppointmentMutation,
+  useFilteredByDateQuery,
+  useFilteredByPatientNameQuery,
+  useUpdateAppointmentMutation,
+  useGetAppointmentsQuery,
+  useGetAppointmentByIdQuery
 } = api
