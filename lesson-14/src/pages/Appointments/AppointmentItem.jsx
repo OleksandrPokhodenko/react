@@ -1,25 +1,59 @@
-import { useGetDoctorsQuery, useGetPatientByIdQuery } from "@/api";
+import { useDeleteAppointmentMutation, useGetDoctorsQuery, useGetPatientByIdQuery, useUpdateAppointmentMutation } from "@/api";
+import { frontRoutes } from "@/router/frontRoutes";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function AppointmentItem({ data }) {
     const date = new Date(data.date)
     const { data: patientData } = useGetPatientByIdQuery(data.patientId)
     const { data: doctorsData } = useGetDoctorsQuery()
-    const doctor = doctorsData?.filter(doc => doc.id === data.doctorId)
+    const doctor = doctorsData?.find(doc => doc.id === data.doctorId)
+    const navigate = useNavigate()
+    const [deleting, setDeleting] = useState(false)
+    const [deleteAppointment] = useDeleteAppointmentMutation()
+    const [appointmentStatus, setAppointmentStatus] = useState(data.status)
+    const [updateAppointment] = useUpdateAppointmentMutation()
+
+    const handleChange = async (e) => {
+        const newStatus = e.target.value
+        setAppointmentStatus(newStatus)
+        await updateAppointment({ id: data.id, status: newStatus })
+    }
+
+    const onDelete = async () => {
+        setDeleting(true)
+        try {
+            await deleteAppointment(data.id)
+        } catch (error) {
+            setDeleting(false)
+        }
+    }
 
     return (
         <div className="appointment-item">
             <div className="appointment-item__content">
                 <div className="appointment-item__box">
                     <div className="appointment-item__patient">Пацієнт: {patientData?.fullName}</div>
-                    <div className="appointment-item__doctor">Лікар: {doctor?.[0].fullName}</div>
+                    <div className="appointment-item__doctor">Лікар: {doctor?.fullName}</div>
                     <div className="appointment-item__date">Дата: {date.toLocaleString('uk-UA')}</div>
                     <div className="appointment-item__reason">Причина: {data.reason}</div>
                 </div>
-                <div className="appointment-item__status">Статус: {data.status}</div>
+                <div className="appointment-item__status">
+                    <label className="appointment-item__label">Статус:
+                        <select
+                            style={appointmentStatus === 'активний' ? { color: 'green', border: '2px solid green' } : { color: 'red', border: '2px solid red' }}
+                            className="appointment-item__select"
+                            value={appointmentStatus}
+                            onChange={handleChange}>
+                            <option className="appointment-item__option" value="активний">активний</option>
+                            <option className="appointment-item__option appointment-item__option--red" value="завершено">завершено</option>
+                        </select>
+                    </label>
+                </div>
             </div>
             <div className="appointment-item__action">
-                <button className="appointment-item__link">Редагувати</button>
-                <button className="appointment-item__button">Видалити</button>
+                <button onClick={() => navigate(frontRoutes.navigate.appointments.edit(data.id))} className="appointment-item__link">Редагувати</button>
+                <button onClick={onDelete} className="appointment-item__button">{deleting ? 'Видалення ...' : 'Видалити'}</button>
             </div>
         </div>
     );

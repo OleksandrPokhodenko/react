@@ -5,7 +5,7 @@
     "doctorId": "d003",
     "date": "2025-07-29T11:37",
     "reason": "Висип на шкірі",
-    "status": "active"
+    "status": "завершено"
   },
   {
     "id": "a003",
@@ -13,7 +13,7 @@
     "doctorId": "d002",
     "date": "2025-08-02T10:30:00Z",
     "reason": "Біль у серці",
-    "status": "completed"
+    "status": "активний"
   },
   {
     "id": "a004",
@@ -21,7 +21,7 @@
     "doctorId": "d004",
     "date": "2025-08-02T13:00:00Z",
     "reason": "Біль у коліні",
-    "status": "completed"
+    "status": "завершено"
   },
   {
     "id": "a005",
@@ -29,7 +29,7 @@
     "doctorId": "d001",
     "date": "2025-08-03T09:00:00Z",
     "reason": "Загальний аналіз",
-    "status": "scheduled"
+    "status": "завершено"
   },
   {
     "id": "a006",
@@ -37,7 +37,7 @@
     "doctorId": "d002",
     "date": "2025-08-03T11:30:00Z",
     "reason": "Підвищений тиск",
-    "status": "scheduled"
+    "status": "завершено"
   },
   {
     "id": "a007",
@@ -45,7 +45,7 @@
     "doctorId": "d005",
     "date": "2025-08-04T09:30:00Z",
     "reason": "Головний біль",
-    "status": "scheduled"
+    "status": "активний"
   },
   {
     "id": "a008",
@@ -53,7 +53,7 @@
     "doctorId": "d003",
     "date": "2025-08-04T12:00:00Z",
     "reason": "Алергія",
-    "status": "cancelled"
+    "status": "завершено"
   },
   {
     "id": "a009",
@@ -61,7 +61,7 @@
     "doctorId": "d004",
     "date": "2025-08-05T10:00:00Z",
     "reason": "Перелом",
-    "status": "completed"
+    "status": "активний"
   },
   {
     "id": "a010",
@@ -69,7 +69,7 @@
     "doctorId": "d001",
     "date": "2025-08-06T09:00:00Z",
     "reason": "Кашель",
-    "status": "scheduled"
+    "status": "завершено"
   },
   {
     "id": "a011",
@@ -77,7 +77,7 @@
     "doctorId": "d005",
     "date": "2025-08-06T10:00:00Z",
     "reason": "Мігрень",
-    "status": "scheduled"
+    "status": "завершено"
   },
   {
     "id": "a012",
@@ -85,7 +85,7 @@
     "doctorId": "d002",
     "date": "2025-08-06T11:00:00Z",
     "reason": "Профілактичний огляд",
-    "status": "scheduled"
+    "status": "активний"
   },
   {
     "id": "a013",
@@ -93,7 +93,7 @@
     "doctorId": "d003",
     "date": "2025-08-07T09:00:00Z",
     "reason": "Почервоніння шкіри",
-    "status": "scheduled"
+    "status": "активний"
   },
   {
     "id": "a014",
@@ -101,7 +101,7 @@
     "doctorId": "d002",
     "date": "2025-08-07T11:00:00Z",
     "reason": "Аритмія",
-    "status": "scheduled"
+    "status": "активний"
   },
   {
     "id": "a015",
@@ -109,7 +109,7 @@
     "doctorId": "d001",
     "date": "2025-08-07T14:00:00Z",
     "reason": "Огляд перед школою",
-    "status": "scheduled"
+    "status": "завершено"
   },
   {
     "id": "a016",
@@ -117,7 +117,7 @@
     "doctorId": "d004",
     "date": "2025-08-08T09:00:00Z",
     "reason": "Біль у спині",
-    "status": "scheduled"
+    "status": "завершено"
   },
   {
     "id": "a017",
@@ -125,7 +125,7 @@
     "doctorId": "d005",
     "date": "2025-08-08T11:30:00Z",
     "reason": "Тремтіння рук",
-    "status": "scheduled"
+    "status": "завершено"
   },
   {
     "id": "a018",
@@ -133,7 +133,7 @@
     "doctorId": "d001",
     "date": "2025-08-08T13:00:00Z",
     "reason": "Кашель",
-    "status": "scheduled"
+    "status": "завершено"
   },
   {
     "id": "a019",
@@ -141,7 +141,7 @@
     "doctorId": "d002",
     "date": "2025-08-09T10:00:00Z",
     "reason": "Серцевий ритм",
-    "status": "scheduled"
+    "status": "активний"
   },
   {
     "id": "a020",
@@ -149,14 +149,6 @@
     "doctorId": "d003",
     "date": "2025-08-09T12:00:00Z",
     "reason": "Свербіж",
-    "status": "scheduled"
-  },
-  {
-    "id": "54013a0d-9eb6-48d0-9e9c-32cb8594647a",
-    "patientId": "p003",
-    "doctorId": "d003",
-    "date": "2025-07-02T11:24",
-    "reason": "dddd",
-    "status": "active"
+    "status": "завершено"
   }
 ]

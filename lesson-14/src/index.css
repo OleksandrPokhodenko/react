@@ -415,6 +415,23 @@
   font-size: 20px;
 }
 
+.appointment-item__label {}
+
+.appointment-item__select {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.appointment-item__option {
+  color: var(--hover-color-green);
+  background-color: var(--background-color);
+}
+
+.appointment-item__option--red {
+  color: var(--hover-color-red);
+}
+
 .appointment-item__action {
   display: flex;
   gap: 20px;

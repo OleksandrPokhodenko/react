@@ -4,7 +4,7 @@ import { apiRoutes } from './apiRoutes'
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
-  tagTypes: ['Patients', 'Doctors'],
+  tagTypes: ['Patients', 'Doctors', 'Appointments'],
   endpoints: (builder) => ({
     getPatients: builder.query({
       query: () => apiRoutes.patients.getAll,
@@ -65,20 +65,14 @@ export const api = createApi({
         method: 'PUT',
         body: data,
       }),
-      invalidatesTags: (result, error, id) => [
-        'Doctors',
-        { type: 'Doctors', id },
-      ],
+      invalidatesTags: ['Doctors'],
     }),
     deleteDoctor: builder.mutation({
       query: (id) => ({
         url: apiRoutes.doctors.delete(id),
         method: 'DELETE'
       }),
-      invalidatesTags: (result, error, id) => [
-        'Doctors',
-        { type: 'Doctors', id }
-      ],
+      invalidatesTags: ['Doctors'],
     }),
     getAppointments: builder.query({
       query: () => apiRoutes.appointments.getAll,
@@ -86,7 +80,7 @@ export const api = createApi({
     }),
     getAppointmentById: builder.query({
       query: (id) => apiRoutes.appointments.getById(id),
-      providesTags: (result, error, id) => [{ type: 'Appointment', id }],
+      providesTags: (result, error, id) => [{ type: 'Appointments', id }],
     }),
     updateAppointment: builder.mutation({
       query: ({ id, ...data }) => ({
@@ -94,6 +88,7 @@ export const api = createApi({
         method: 'PUT',
         body: data,
       }),
+      invalidatesTags: ['Appointments'],
     }),
     createAppointment: builder.mutation({
       query: (id) => ({
@@ -101,20 +96,14 @@ export const api = createApi({
         method: 'POST',
         body: data,
       }),
-      invalidatesTags: ({ result, error, id }) => [
-        'Appointments',
-        { type: 'Appointment', id }
-      ],
+      invalidatesTags: ['Appointments'],
     }),
     deleteAppointment: builder.mutation({
       query: (id) => ({
         url: apiRoutes.appointments.delete(id),
         method: 'DELETE',
       }),
-      invalidatesTags: ({ result, error, id }) => [
-        'Appointments',
-        { type: 'Appointment', id }
-      ],
+      invalidatesTags: ['Appointments'],
     }),
     filteredByDate: builder.query({
       query: (date) => apiRoutes.appointments.filterByDate(date),
@@ -122,7 +111,7 @@ export const api = createApi({
     }),
     filteredByPatientName: builder.query({
       query: (patientName) => apiRoutes.appointments.filterByPatientName(patientName),
-      invalidatesTags: ['Appointments'],
+      providesTags: ['Appointments'],
     }),
   }),
 })

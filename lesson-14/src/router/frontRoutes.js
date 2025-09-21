@@ -31,7 +31,7 @@ export const frontRoutes = {
     appointments: {
       list: '/appointments',
       edit: (id) => `/appointments/edit/${id}`,
-      create: 'appointments/edit',
+      create: '/appointments/edit',
     }
   },
 }
