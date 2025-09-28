@@ -3,7 +3,7 @@ import { apiRoutes } from './apiRoutes'
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://react-14-z29u.onrender.com/' }),
   tagTypes: ['Patients', 'Doctors', 'Appointments'],
   endpoints: (builder) => ({
     getPatients: builder.query({
