@@ -88,11 +88,14 @@ export const api = createApi({
         method: 'PUT',
         body: data,
       }),
-      invalidatesTags: ['Appointments'],
+      invalidatesTags: (result, error, id) => [
+        'Appointments',
+        { type: 'Appointments', id }
+      ]
     }),
     createAppointment: builder.mutation({
-      query: (id) => ({
-        url: apiRoutes.appointments.create(id),
+      query: (data) => ({
+        url: apiRoutes.appointments.create,
         method: 'POST',
         body: data,
       }),

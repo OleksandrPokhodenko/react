@@ -248,10 +248,12 @@
   gap: 20px;
 }
 
+.appointment-form__title,
 .doctor-form-page__title,
 .patient-form__title {
   font-size: 30px;
   color: var(--text-color);
+  text-align: center;
 }
 
 .doctor-form-page__form,
@@ -263,8 +265,10 @@
   width: 100%;
 }
 
+.appointment-form__input,
 .doctor-form-page__input,
-.patient-form__input {
+.patient-form__input,
+.appointments-page__input {
   padding: 10px;
   font-size: 20px;
   border: var(--border);
@@ -272,12 +276,16 @@
   transition: border 0.3s, box-shadow 0.3s;
 }
 
+.appointment-form__input:hover,
+.appointments-page__input:hover,
 .doctor-form-page__input:hover,
 .patient-form__input:hover {
   border: var(--border-hover-color);
   box-shadow: var(--box-shadow);
 }
 
+.appointment-form__input:focus,
+.appointments-page__input:focus,
 .doctor-form-page__input:focus,
 .patient-form__input:focus {
   border: var(--border-hover-color);
@@ -296,6 +304,7 @@
   transform: color 0.3s, border 0.3s;
 }
 
+.appointment-form__button:hover,
 .appointment-item__link:hover,
 .doctor-form-page__button:hover,
 .patient-form__button:hover {
@@ -341,6 +350,7 @@
   gap: 20px;
 }
 
+.appointment-form__button,
 .appointments-page__link,
 .appointment-item__button,
 .patient-details__button,
@@ -373,6 +383,23 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.appointments-page__box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.appointments-page__input {
+  padding: 10px;
+  font-size: 20px;
+}
+
+.appointments-page__message {
+  padding: 20px;
+  font-size: 24px;
+  text-align: center;
 }
 
 /* ---------------------------------------------------------------------------------------- */
@@ -415,8 +442,6 @@
   font-size: 20px;
 }
 
-.appointment-item__label {}
-
 .appointment-item__select {
   margin-left: 10px;
   padding: 10px;
@@ -437,6 +462,72 @@
   gap: 20px;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+/* ---------------------------------------------------------------------------------------- */
+
+.appointment-form {}
+
+.appointment-form__title:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.appointment-form__form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.appointment-form__select-block {}
+
+.appointment-form__label {
+  margin-bottom: 20px;
+  display: block;
+  font-size: 20px;
+}
+
+.appointment-form__select {}
+
+.appointment-form__option {
+  background-color: var(--card-background-color);
+}
+
+.appointment-form__input-block {}
+
+.appointment-form__input {
+  margin-top: 20px;
+}
+
+/* ---------------------------------------------------------------------------------------- */
+
+.home-page {}
+
+.home-page__title {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.home-page__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.home-page__link {
+  padding: 40px 60px;
+  border: var(--border);
+  border-radius: 20px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.home-page__link:hover {
+  border: var(--border-hover-color);
+  box-shadow: var(--box-shadow);
 }
 
 /* ---------------------------------------------------------------------------------------- */
