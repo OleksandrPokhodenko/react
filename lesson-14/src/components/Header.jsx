@@ -1,5 +1,5 @@
 import MainMenu from "./MainMenu";
-import logo from '@/assets/img/logo.avif'
+import logo from '@/assets/img/logo.webp'
 
 function Header({ theme, changeTheme }) {
     return (
